@@ -1,0 +1,15 @@
+#!/usr/bin/env expect
+
+set PANDORA_KEY [exec cat "$::env(HOME)/.config/walterjwhite/pandora"]
+
+set _email [exec sget -LogLevel error -StdOut $PANDORA_KEY email-address]
+set _password [exec sget -LogLevel error -StdOut $PANDORA_KEY password]
+
+spawn pianobar
+expect "* Email:"
+send $_email\r
+
+expect "* Password:"
+send $_password\r
+
+interact
