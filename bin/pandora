@@ -2,8 +2,8 @@
 
 set PANDORA_KEY [exec cat "$::env(HOME)/.config/walterjwhite/pandora"]
 
-set _email [exec secrets get -o=s $PANDORA_KEY email-address]
-set _password [exec secrets get -o=s $PANDORA_KEY password]
+set _email [exec secrets get -o=s $PANDORA_KEY email-address 2>/dev/null]
+set _password [exec secrets get -o=s $PANDORA_KEY password 2>/dev/null]
 
 spawn pianobar
 expect "* Email:"
